@@ -9,15 +9,15 @@ public static class GenerateWall
         // vertical 일 때 rotation Y축으로 90 , position x=-1
         for(int i = 0; i<verticalL.Count; i++)
         {
-            GameObject.Instantiate(WallPrefab, new Vector3(verticalL[i].x , 0, verticalL[i].y+1), Quaternion.Euler(0,-90,0), room.transform.parent).transform.parent=room.transform;
+            GameObject.Instantiate(WallPrefab, new Vector3(verticalL[i].x , 0, verticalL[i].y), Quaternion.Euler(0,90,0), room.transform.parent).transform.parent=room.transform;
         }
         for (int i = 0; i < verticalR.Count; i++)
         {
-            GameObject.Instantiate(WallPrefab, new Vector3(verticalR[i].x, 0, verticalR[i].y+1), Quaternion.Euler(0, 270, 0), room.transform.parent).transform.parent = room.transform;
+            GameObject.Instantiate(WallPrefab, new Vector3(verticalR[i].x, 0, verticalR[i].y+1), Quaternion.Euler(0, -90, 0), room.transform.parent).transform.parent = room.transform;
         }
         for (int i = 0; i < horizontalU.Count; i++)
         {
-            GameObject.Instantiate(WallPrefab, new Vector3(horizontalU[i].x+1, 0, horizontalU[i].y),Quaternion.Euler(0,0,0), room.transform.parent).transform.parent = room.transform;
+            GameObject.Instantiate(WallPrefab, new Vector3(horizontalU[i].x, 0, horizontalU[i].y),Quaternion.Euler(0,180,0), room.transform.parent).transform.parent = room.transform;
         }
         for (int i = 0; i < horizontalD.Count; i++)
         {

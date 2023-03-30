@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
 
 public class MapCreator : MonoBehaviour
 {
@@ -33,17 +34,20 @@ public class MapCreator : MonoBehaviour
     private Queue<TreeNode> _roomQueue = new Queue<TreeNode>(); // Queue를 통한 Dividing 노드 실시
     private List<TreeNode> _roomInfo = new List<TreeNode>();
     private List<Bridge> _bridgeInfo = new List<Bridge>();
+    private List<GameObject> _list = new List<GameObject>();
 
     public List<TreeNode> RoomTree { get => _roomTree; set => _roomTree = value; }    
     public Queue<TreeNode> RoomQueue { get => _roomQueue; set => _roomQueue = value; }    
     public List<TreeNode> RoomInfo { get => _roomInfo; set => _roomInfo = value; }        
     public List<Bridge> BridgeInfo { get => _bridgeInfo; set => _bridgeInfo = value; }
+
 //-----------------------------------------------------------------------------------변수 및 프로퍼티 선언------------------------------------------------------------------------------------------------  
 
     public void Awake()
     {
         if (_instance == null)
-            _instance = this;        
+            _instance = this;
+
     }
 
     public void Start()
@@ -52,6 +56,8 @@ public class MapCreator : MonoBehaviour
         InitRoom();
         InitBridge();
         InitWallTile();
+
+        StaticBatchingUtility.Combine(_list.ToArray<GameObject>(),gameObject);
     }
 
     public void Init()
@@ -171,10 +177,13 @@ public class MapCreator : MonoBehaviour
         mesh.vertices = vertices;
         mesh.uv = uvs;
         mesh.triangles = triangles;
+        
+        
 
-        GameObject floor = new GameObject($"{typeof(T).Name}{nodeNum}", typeof(MeshFilter), typeof(MeshRenderer));
-        floor.gameObject.isStatic = true;
 
+        GameObject floor = new GameObject($"{typeof(T).Name}{nodeNum}", typeof(MeshFilter), typeof(MeshRenderer));        
+        _list.Add(floor);
+        
         floor.transform.position = _startPos;
         floor.transform.localScale = Vector3.one;
         floor.GetComponent<MeshFilter>().mesh = mesh;

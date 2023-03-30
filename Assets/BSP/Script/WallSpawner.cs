@@ -5,16 +5,13 @@ using UnityEngine;
 public class WallSpawner : MonoBehaviour
 {
     public List<GameObject> wallList = new List<GameObject>();
-    public void Start()
+    public void Awake()
     {
-        int ranNum = Random.Range(0, wallList.Count);
-        var wallUp = Instantiate(wallList[ranNum], this.gameObject.transform.position + new Vector3(0,2,0), this.gameObject.transform.rotation, this.gameObject.transform);
-        ranNum = Random.Range(0, wallList.Count);
+        int ranNum = 0;
+        var wallUp = Instantiate(wallList[ranNum], this.gameObject.transform.position + new Vector3(0, 2, 0), this.gameObject.transform.rotation, this.gameObject.transform);
+        ranNum = 0;
         var wallMiddle = Instantiate(wallList[ranNum], this.gameObject.transform.position + new Vector3(0, 1, 0), this.gameObject.transform.rotation, this.gameObject.transform);
-        ranNum = Random.Range(0, wallList.Count);
+        ranNum = 0;
         var wallDown = Instantiate(wallList[ranNum], this.gameObject.transform.position, this.gameObject.transform.rotation, this.gameObject.transform);
-        wallUp.gameObject.isStatic = true;
-        wallMiddle.gameObject.isStatic = true;
-        wallDown.gameObject.isStatic = true;
     }
 }
