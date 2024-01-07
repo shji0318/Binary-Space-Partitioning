@@ -16,6 +16,10 @@
 
 
 ### 간단한 클래스 설명
+
+${\textsf{\color\{red}Ctrl + 클릭을 통해 새창열기로 쉽게 코드를 확인하실 수 있습니다.}}$
+
+
 - [**MapCreator.cs**](https://github.com/shji0318/Binary-Space-Partitioning/blob/main/Assets/BSP/Script/MapCreator.cs)
   - BSP 알고리즘들을 종합하여 실행하기 위한 최상위 클래스입니다. **노드 생성, 다리 생성, 타일 생성 등, 순서를 제어하기 위해 설계**했습니다. 
   - Room 분할을 진행하며 완전 이진 트리를 생성 후, Room 정보 저장 및 메쉬 생성 (InitRoom() 부분)
