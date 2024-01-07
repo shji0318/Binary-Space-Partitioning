@@ -36,10 +36,10 @@ public class MapCreator : MonoBehaviour
     private List<Bridge> _bridgeInfo = new List<Bridge>();
     private List<GameObject> _list = new List<GameObject>();
 
-    public List<TreeNode> RoomTree { get => _roomTree; set => _roomTree = value; }    
-    public Queue<TreeNode> RoomQueue { get => _roomQueue; set => _roomQueue = value; }    
-    public List<TreeNode> RoomInfo { get => _roomInfo; set => _roomInfo = value; }        
-    public List<Bridge> BridgeInfo { get => _bridgeInfo; set => _bridgeInfo = value; }
+    public List<TreeNode> RoomTree { get => _roomTree; private set => _roomTree = value; }    
+    public Queue<TreeNode> RoomQueue { get => _roomQueue; private set => _roomQueue = value; }    
+    public List<TreeNode> RoomInfo { get => _roomInfo; private set => _roomInfo = value; }        
+    public List<Bridge> BridgeInfo { get => _bridgeInfo; private set => _bridgeInfo = value; }
 
 //-----------------------------------------------------------------------------------변수 및 프로퍼티 선언------------------------------------------------------------------------------------------------  
 
